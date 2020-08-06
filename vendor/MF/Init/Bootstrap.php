@@ -1,12 +1,11 @@
-<?php 
+<?php
 
 namespace MF\Init;
 
 abstract class Bootstrap {
-
 	private $routes;
 
-	abstract protected function initRoutes();
+	abstract protected function initRoutes(); 
 
 	public function __construct() {
 		$this->initRoutes();
@@ -39,3 +38,5 @@ abstract class Bootstrap {
 		return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	}
 }
+
+?>

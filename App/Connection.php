@@ -16,7 +16,7 @@ class Connection {
 			return $conn;
 
 		} catch (\PDOException $e) {
-			//.. tratar de alguma forma ..//
+			echo 'Mensagem de erro '. $e->getMessage() . 'Código: '. $e->getCode();
 		}
 	}
 }

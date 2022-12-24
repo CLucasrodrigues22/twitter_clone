@@ -10,13 +10,13 @@ class Connection {
 			$conn = new \PDO(
 				"mysql:host=localhost;dbname=twitter_clone;charset=utf8",
 				"root",
-				"" 
+				"P@ssw0rd" 
 			);
 
 			return $conn;
 
 		} catch (\PDOException $e) {
-			echo 'Mensagem de erro '. $e->getMessage() . 'Código: '. $e->getCode();
+			//.. tratar de alguma forma ..//
 		}
 	}
 }

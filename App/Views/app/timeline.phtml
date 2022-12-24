@@ -1,21 +1,21 @@
 <nav class="navbar navbar-expand-lg menu">
 	<div class="container">
-	  <div class="navbar-nav">
-	  	<a class="menuItem" href="/timeline">
-	  		Home
-	  	</a>
+		<div class="navbar-nav">
+			<a class="menuItem" href="/timeline">
+				Home
+			</a>
 
-	  	<a class="menuItem" href="/sair">
-	  		Sair
-	  	</a>
+			<a class="menuItem" href="/sair">
+				Sair
+			</a>
 			<img src="/img/twitter_logo.png" class="menuIco" />
-	  </div>
+		</div>
 	</div>
 </nav>
 
 <div class="container mt-5">
 	<div class="row pt-2">
-		
+
 		<div class="col-md-3">
 
 			<div class="perfil">
@@ -24,10 +24,12 @@
 				</div>
 
 				<div class="perfilPainel">
-					
+
 					<div class="row mt-2 mb-2">
 						<div class="col mb-2">
-							<span class="perfilPainelNome">Nome do Usuário</span>
+							<span class="perfilPainelNome">
+								<?= $this->view->info_usuario['nome'] ?>
+							</span>
 						</div>
 					</div>
 
@@ -35,17 +37,23 @@
 
 						<div class="col">
 							<span class="perfilPainelItem">Tweets</span><br />
-							<span class="perfilPainelItemValor">0</span>
+							<span class="perfilPainelItemValor">
+								<?= $this->view->total_tweets['total_tweet'] ?>
+							</span>
 						</div>
 
 						<div class="col">
 							<span class="perfilPainelItem">Seguindo</span><br />
-							<span class="perfilPainelItemValor">0</span>
+							<span class="perfilPainelItemValor">
+								<?= $this->view->total_seguindo['total_seguindo'] ?>
+							</span>
 						</div>
 
 						<div class="col">
 							<span class="perfilPainelItem">Seguidores</span><br />
-							<span class="perfilPainelItemValor">0</span>
+							<span class="perfilPainelItemValor">
+								<?= $this->view->total_seguidores['total_seguidores'] ?>
+							</span>
 						</div>
 
 					</div>
@@ -60,7 +68,7 @@
 				<div class="col tweetBox">
 					<form method="post" action="/tweet">
 						<textarea class="form-control" name="tweet" id="exampleFormControlTextarea1" rows="3"></textarea>
-						
+
 						<div class="col mt-2 d-flex justify-content-end">
 							<button type="submit" class="btn btn-primary">Tweet</button>
 						</div>
@@ -69,20 +77,18 @@
 				</div>
 			</div>
 
-			<?php foreach($this->view->tweets as $id_tweet => $tweet) { ?>
+			<?php foreach ($this->view->tweets as $id_tweet => $tweet) { ?>
 				<div class="row tweet">
 					<div class="col">
-						<p><strong><?=$tweet['nome']?></strong> <small><span class="text text-muted">- <?=$tweet['data']?></span></small></p>
-						<p><?=$tweet['tweet']?></p>
+						<p><strong><?= $tweet['nome'] ?></strong> <small><span class="text text-muted">- <?= $tweet['data'] ?></span></small></p>
+						<p><?= $tweet['tweet'] ?></p>
 						<br />
 						<?php if ($tweet['id_usuario'] == $_SESSION['id']) { ?>
-			
-							<div class="col d-flex justify-content-end">
-							<a href="/removeTweet?acao=remover&id_tweet=<?=$tweet['id']?>"
-							class="btn btn-outline-danger">Remover</a>
-		
-							</div>
-					
+							<form>
+								<div class="col d-flex justify-content-end">
+									<button type="submit" class="btn btn-danger"><small>Remover</small></button>
+								</div>
+							</form>
 						<?php } ?>
 					</div>
 				</div>
@@ -97,6 +103,22 @@
 				<span class="quemSeguirTitulo">Quem seguir</span><br />
 				<hr />
 				<a href="/quem_seguir" class="quemSeguirTxt">Procurar por pessoas conhecidas</a>
+				<div class="card-body">
+					<ul class="p-0 m-0">
+						<li class="d-flex pt-1">
+							<div class="avatar flex-shrink-0 me-3">
+								<i class="bx bxs-collection"></i>
+							</div>
+							<!-- <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+								<div class="me-2">
+									<h6 class="mb-0">Nome de usuário</h6>
+									<a class="btn btn-primary btn-sm">Seguir</a>
+								</div> -->
+							</div>
+						</li>
+						<hr>
+					</ul>
+				</div>
 			</div>
 		</div>
 
